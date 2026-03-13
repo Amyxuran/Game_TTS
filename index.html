@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTok Simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero-panel">
+      <div class="hero-copy">
+        <p class="eyebrow">Brooklyn Feed Engine</p>
+        <h1>TikTok Simulator</h1>
+        <p class="subtitle">当注意力变成商品，自我也会像灯光一样被调色。</p>
+      </div>
+      <div class="hero-actions">
+        <button id="restart-button" type="button" class="primary-button">重新开始</button>
+        <button id="clear-save-button" type="button" class="secondary-button">清除存档</button>
+        <button id="open-endings-button" type="button" class="secondary-button">结局图鉴</button>
+      </div>
+    </section>
+
+    <section class="main-grid">
+      <div class="left-rail">
+        <article class="panel status-panel">
+          <div class="meta-grid">
+            <div class="meta-card">
+              <span>日期</span>
+              <strong id="day-label">第 1 天</strong>
+            </div>
+            <div class="meta-card">
+              <span>周数</span>
+              <strong id="week-label">第 1 周</strong>
+            </div>
+            <div class="meta-card">
+              <span>行动点</span>
+              <strong id="actions-label">2 / 2</strong>
+            </div>
+            <div class="meta-card">
+              <span>房租倒计时</span>
+              <strong id="rent-label">7 天</strong>
+            </div>
+          </div>
+
+          <div id="stats-grid" class="stats-grid"></div>
+        </article>
+
+        <article class="panel actions-panel">
+          <div class="panel-header panel-header-inline">
+            <div>
+              <h2>今日行动</h2>
+              <p>每日 2 点行动，某些事件会改写后续选项。</p>
+            </div>
+          </div>
+          <div id="actions-container" class="actions-container"></div>
+        </article>
+      </div>
+
+      <article class="panel narrative-panel">
+        <div class="panel-header panel-header-inline">
+          <div>
+            <h2>叙事</h2>
+            <p id="system-tip">你的每个动作都在训练你成为某种人。</p>
+          </div>
+          <div class="utility-buttons">
+            <button id="rewind-day-button" type="button" class="secondary-button utility-button">回到上一天</button>
+            <button id="open-log-button" type="button" class="secondary-button utility-button">事件日志</button>
+          </div>
+        </div>
+        <div id="narrative" class="narrative" aria-live="polite"></div>
+      </article>
+    </section>
+  </main>
+
+  <div id="overlay" class="overlay hidden"></div>
+
+  <section id="log-modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h2>事件日志</h2>
+          <p>最近发生的事会留下痕迹。</p>
+        </div>
+        <button type="button" class="secondary-button utility-button" data-close-modal="log-modal">关闭</button>
+      </div>
+      <div id="log-container" class="log-container modal-scroll"></div>
+    </div>
+  </section>
+
+  <section id="endings-modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h2>结局图鉴</h2>
+          <p>已达成的结局会在这里保留。</p>
+        </div>
+        <button type="button" class="secondary-button utility-button" data-close-modal="endings-modal">关闭</button>
+      </div>
+      <div id="ending-collection" class="ending-collection modal-scroll"></div>
+    </div>
+  </section>
+
+  <section id="choice-modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-card choice-card">
+      <div class="modal-header">
+        <div>
+          <h2 id="choice-title">分支事件</h2>
+          <p id="choice-text">你需要做出选择。</p>
+        </div>
+      </div>
+      <div id="choice-options" class="choice-options"></div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
